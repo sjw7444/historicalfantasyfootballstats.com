@@ -1,6 +1,6 @@
 # Fantasy MVP
 
-A static site for comparing NFL fantasy football statistics across 55 years of data (1970-2024).
+A static site for comparing historical fantasy football statistics across 55 years of data (1970-2024).
 
 ## Features
 
@@ -41,7 +41,7 @@ A static site for comparing NFL fantasy football statistics across 55 years of d
    ```
 
 3. Download the data:
-   - Download the [NFL Fantasy Data 1970-2024](https://www.kaggle.com/datasets/heefjones/nfl-fantasy-data-1970-2024) from Kaggle
+   - Download the [Fantasy Data 1970-2024](https://www.kaggle.com/datasets/heefjones/nfl-fantasy-data-1970-2024) from Kaggle
    - Place `fantasy_data.csv` in the project root
 
 4. Process the data:
@@ -81,7 +81,7 @@ npx wrangler pages deploy dist
 
 ## Data Source
 
-Player statistics from [NFL Fantasy Data 1970-2024](https://www.kaggle.com/datasets/heefjones/nfl-fantasy-data-1970-2024) on Kaggle (Pro Football Reference data).
+Player statistics from [Fantasy Data 1970-2024](https://www.kaggle.com/datasets/heefjones/nfl-fantasy-data-1970-2024) on Kaggle (Pro Football Reference data).
 
 ## License
 
