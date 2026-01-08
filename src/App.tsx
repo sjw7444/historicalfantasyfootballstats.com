@@ -52,16 +52,16 @@ function App() {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-900"
             >
-              Twitter
+              Twitter/X
             </a>
             <span className="text-gray-400">•</span>
             <a
-              href="https://github.com"
+              href="https://github.com/smeriwether/historicalfantasyfootballstats.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-900"
             >
-              Open Source on GitHub
+              Open source on GitHub
             </a>
           </p>
           <p className="mt-2 text-gray-400">Go Texans!</p>
