@@ -1,0 +1,39 @@
+import type { PlayerSeason, PositionFilter, YearFilter } from '../types';
+
+const CURRENT_YEAR = new Date().getFullYear();
+
+export function filterByPosition(
+  data: PlayerSeason[],
+  position: PositionFilter
+): PlayerSeason[] {
+  if (position === 'All') return data;
+  return data.filter((p) => p.position === position);
+}
+
+export function filterByYearRange(
+  data: PlayerSeason[],
+  yearFilter: YearFilter
+): PlayerSeason[] {
+  if (typeof yearFilter === 'number') {
+    return data.filter((p) => p.year === yearFilter);
+  }
+
+  switch (yearFilter) {
+    case 'Last35':
+      return data.filter((p) => p.year >= CURRENT_YEAR - 35);
+    case '2020s':
+      return data.filter((p) => p.year >= 2020 && p.year <= 2029);
+    case '2010s':
+      return data.filter((p) => p.year >= 2010 && p.year <= 2019);
+    case '2000s':
+      return data.filter((p) => p.year >= 2000 && p.year <= 2009);
+    case '1990s':
+      return data.filter((p) => p.year >= 1990 && p.year <= 1999);
+    case '1980s':
+      return data.filter((p) => p.year >= 1980 && p.year <= 1989);
+    case '1970s':
+      return data.filter((p) => p.year >= 1970 && p.year <= 1979);
+    default:
+      return data;
+  }
+}
