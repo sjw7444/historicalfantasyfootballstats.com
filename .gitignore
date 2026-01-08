@@ -30,3 +30,5 @@ playwright-report
 
 # Raw data (users download their own)
 *.csv
+
+.playwright-mcp
