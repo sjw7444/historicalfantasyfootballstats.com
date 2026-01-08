@@ -26,7 +26,8 @@
       "mcp__plugin_compound-engineering_pw__browser_close",
       "Bash(cat:*)",
       "mcp__plugin_compound-engineering_pw__browser_select_option",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(git push:*)"
     ]
   }
 }
