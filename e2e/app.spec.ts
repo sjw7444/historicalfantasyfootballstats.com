@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Fantasy MVP App', () => {
+test.describe('Historical Fantasy Football Stats', () => {
   test('scoring modal saves and persists changes', async ({ page }) => {
     await page.goto('/');
 
@@ -15,12 +15,12 @@ test.describe('Fantasy MVP App', () => {
     const pprLabel = page.getByText('Points per Reception');
     const pprInput = pprLabel.locator('..').locator('input');
 
-    // Verify initial value is 0 (standard scoring)
-    await expect(pprInput).toHaveValue('0');
-
-    // Change PPR to 1 (full PPR)
-    await pprInput.fill('1');
+    // Verify initial value is 1 (full PPR - the default)
     await expect(pprInput).toHaveValue('1');
+
+    // Change PPR to 0.5 (half PPR)
+    await pprInput.fill('0.5');
+    await expect(pprInput).toHaveValue('0.5');
 
     // Save changes
     await page.getByRole('button', { name: 'Save Changes' }).click();
@@ -32,9 +32,9 @@ test.describe('Fantasy MVP App', () => {
     await page.getByRole('button', { name: 'Scoring Settings' }).click();
     await expect(page.getByRole('heading', { name: 'Scoring Settings' })).toBeVisible();
 
-    // Verify PPR is still 1 (this is the bug - it resets to 0)
+    // Verify PPR is still 0.5
     const pprInputAgain = pprLabel.locator('..').locator('input');
-    await expect(pprInputAgain).toHaveValue('1');
+    await expect(pprInputAgain).toHaveValue('0.5');
 
     // Close modal
     await page.getByRole('button', { name: 'Cancel' }).click();
@@ -44,7 +44,7 @@ test.describe('Fantasy MVP App', () => {
     await page.goto('/');
 
     // Check header is present
-    await expect(page.locator('h1')).toContainText('Fantasy MVP');
+    await expect(page.locator('h1')).toContainText('Historical Fantasy Football Stats');
 
     // Wait for data to load (loading indicator should disappear)
     await expect(page.getByText('Loading data...')).toBeHidden({ timeout: 10000 });
