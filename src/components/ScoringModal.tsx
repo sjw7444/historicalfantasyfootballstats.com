@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from './Modal';
 import { useFantasyStore } from '../stores/fantasyStore';
 import type { ScoringConfig } from '../types';
@@ -37,9 +37,12 @@ export function ScoringModal() {
   // Local state for form
   const [localConfig, setLocalConfig] = useState<ScoringConfig>(scoringConfig);
 
-  const handleOpen = () => {
-    setLocalConfig(scoringConfig);
-  };
+  // Sync local state when modal opens
+  useEffect(() => {
+    if (isConfigModalOpen) {
+      setLocalConfig(scoringConfig);
+    }
+  }, [isConfigModalOpen, scoringConfig]);
 
   const handleSave = () => {
     setScoringConfig(localConfig);
@@ -61,7 +64,7 @@ export function ScoringModal() {
       onClose={closeConfigModal}
       title="Scoring Settings"
     >
-      <div onTransitionEnd={handleOpen}>
+      <div>
         <div className="space-y-6">
           {/* Passing */}
           <div>
