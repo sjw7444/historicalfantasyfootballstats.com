@@ -88,16 +88,18 @@ export function StatsTable() {
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 const isPlayerColumn = header.column.id === 'player';
+                const isTextColumn = header.column.id === 'player' || header.column.id === 'team';
                 return (
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className={`px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider
+                    className={`px-3 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider
                                cursor-pointer hover:bg-gray-100 select-none whitespace-nowrap
+                               ${isTextColumn ? 'text-left' : 'text-right'}
                                ${isPlayerColumn ? 'sticky left-0 z-10 bg-gray-50 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]' : ''}`}
                     style={{ width: header.column.getSize() }}
                   >
-                    <div className="flex items-center gap-1">
+                    <div className={`flex items-center gap-1 ${isTextColumn ? '' : 'justify-end'}`}>
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
@@ -121,11 +123,13 @@ export function StatsTable() {
             >
               {row.getVisibleCells().map((cell) => {
                 const isPlayerColumn = cell.column.id === 'player';
+                const isTextColumn = cell.column.id === 'player' || cell.column.id === 'team';
                 const rowBg = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
                 return (
                   <td
                     key={cell.id}
                     className={`px-3 py-2 text-sm text-gray-900 whitespace-nowrap
+                               ${isTextColumn ? 'text-left' : 'text-right'}
                                ${isPlayerColumn ? `sticky left-0 z-10 ${rowBg} shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]` : ''}`}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
